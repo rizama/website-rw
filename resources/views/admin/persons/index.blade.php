@@ -36,26 +36,34 @@
                             <th>RT</th>
                             <th>Status Warga</th>
                             <th>Pekerjaan</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach ($persons as $key => $person)
+                        @foreach ($persons as $key => $person)
                         <tr>
                             <td>{{$key+1}}</td>
-                            <td>{{$job->name}}</td>
-                            <td>{{$job->description}}</td>
+                            <td>{{$person->name}}</td>
+                            <td>{{$person->rt_number}}</td>
+                            <td>{{$person->status->name}}</td>
+                            <td>{{$person->job->name}}</td>
                             <td>
-                                <a href="{{route('jobs.edit', $job->id)}}" data-toggle="tooltip" title="Ubah Data" >
+                                <a href="{{route('persons.show', $person->id)}}" data-toggle="tooltip" title="Detail" >
+                                    <button class="btn btn-icon btn-success mr-1">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </a>
+                                <a href="{{route('persons.edit', $person->id)}}" data-toggle="tooltip" title="Ubah Data" >
                                     <button class="btn btn-icon btn-primary mr-1">
                                         <i class="fas fa-edit"></i>
                                     </button>
                                 </a>
-                                <button href="{{ route('jobs.destroy', $job->id) }}" data-name="{{ $job->name }}" data-toggle="tooltip" title="Hapus Data" class="btn btn-icon btn-danger btn-delete">
+                                <button href="{{ route('persons.destroy', $person->id) }}" data-name="{{ $person->name }}" data-toggle="tooltip" title="Hapus Data" class="btn btn-icon btn-danger btn-delete">
                                     <i class="fas fa-trash-alt"></i>
                                 </button>
                             </td>
                         </tr>
-                        @endforeach --}}
+                        @endforeach
                     </tbody>
                 </table>
             </div>

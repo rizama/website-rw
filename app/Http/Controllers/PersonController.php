@@ -20,7 +20,7 @@ class PersonController extends Controller
      */
     public function index()
     {
-        $persons = Person::all();
+        $persons = Person::with('education', 'job', 'economic', 'status', 'eviden')->get();
 
         $ret['persons'] = $persons;
 
@@ -130,12 +130,13 @@ class PersonController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Job  $job
+     * @param  \App\Person  $Person
      * @return \Illuminate\Http\Response
      */
-    public function show(Job $job)
+    public function show(Person $person)
     {
-        //
+        $ret['person'] = $person->load('education', 'job', 'economic', 'status', 'eviden');
+        return view('admin.persons.show', $ret);
     }
 
     /**

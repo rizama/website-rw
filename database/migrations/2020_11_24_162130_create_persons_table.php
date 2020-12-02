@@ -23,7 +23,7 @@ class CreatePersonsTable extends Migration
             $table->string('name');
             $table->text('address')->nullable();
             $table->string('rt_number');
-            $table->boolean('gender')->nullable()->default(true);
+            $table->char('gender', 4)->nullable();
             $table->date('date_of_birth')->nullable();
             $table->string('place_of_birth')->nullable();
             $table->string('religion')->nullable();

@@ -47,8 +47,8 @@
                 <div class="col-md-6 form-group">
                     <label for="gender">Jenis Kelamin</label>
                     <select class="select2" name="gender" id="gender">
-                        <option value=1>Laki-laki</option>
-                        <option value=2>Perempuan</option>
+                        <option value="L">Laki-laki</option>
+                        <option value="P">Perempuan</option>
                     </select>
                 </div>
                 <div class="col-md-6 form-group">
