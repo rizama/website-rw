@@ -108,7 +108,6 @@ class PersonController extends Controller
                 $eviden->save();
 
                 $evidenId = $eviden->id;
-
             }
             
             $person->evidens_id = $evidenId;
@@ -119,7 +118,6 @@ class PersonController extends Controller
         
             return redirect()->route('persons.index')->with(['success' => 'Penduduk "' . $person->name . '" ditambahkan.']);
         } catch (\Exception $e) {
-            dd($e);
             DB::rollback();
             return redirect()->route('persons.index')->with(['error' => 'Tidak dapat melanjutkan proses']);
         }
@@ -142,38 +140,101 @@ class PersonController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Job $job
+     * @param  \App\Person $person
      * @return \Illuminate\Http\Response
      */
-    public function edit(Job $job)
+    public function edit(Person $person)
     {
-        $ret['job'] = $job;
-        return view('admin.jobs.edit', $ret);
+        $educations = Education::all();
+        $jobs = Job::all();
+        $economic = Economic::all();
+        $status = StatusCitizen::all();
+
+        $ret['educations'] = $educations;
+        $ret['jobs'] = $jobs;
+        $ret['economic'] = $economic;
+        $ret['status'] = $status;
+
+        $ret['person'] = $person->load('education', 'job', 'economic', 'status', 'eviden');
+        // dd($ret['person']);
+        return view('admin.persons.edit', $ret);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Job $job
+     * @param  \App\Person $person
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Job $job)
+    public function update(Request $request, Person $person)
     {
         $this->validate($request, [
-            'name' => 'required|string|min:2'
+            'name' => 'required|string|min:2',
+            'rt' => 'required',
+            'gender' => 'required',
+            'religion' => 'required',
+            'date_of_birth' => 'required',
+            'place_of_birth' => 'required',
+            'education' => 'required',
+            'job' => 'required',
+            'economic' => 'required',
+            'status' => 'required',
+            'address' => 'nullable',
+            'eviden' => 'mimes:jpg,png,jpeg,pdf|max:2048'
         ],[
-            'name.required' => 'Nama pendidikan tidak boleh kosong.',
-            'name.min' => 'Nama pendidikan minimal 2 karakter.'
+            'name.required' => 'Nama tidak boleh kosong.',
+            'name.min' => 'Nama minimal 2 karakter.'
         ]);
 
+        // dd($person, $request->all());
+
+        DB::beginTransaction();
+
         try {
-            $job->name = $request->name;
-            $job->description = $request->description;
-            $job->save();
-    
-            return redirect()->route('jobs.index')->with(['success' => 'Pekerjaan "' . $job->name . '" diubah.']);
+
+            $person->name = $request->name;
+            $person->job_id = $request->job;
+            $person->education_id = $request->education;
+            $person->economic_conditions_id = $request->economic;
+            $person->citizens_status_id = $request->status;
+            $person->rt_number = $request->rt;
+            $person->address = $request->address;
+            $person->gender = $request->gender;
+            $person->date_of_birth = $request->date_of_birth;
+            $person->place_of_birth = $request->place_of_birth;
+            $person->religion = $request->religion;
+            $person->save();
+            
+            $personId = $person->id;
+            
+            if($request->file()) {
+                $eviden = new Eviden;
+
+                $file = $request->file('eviden');
+
+                $fileName = time().'_'.$file->getClientOriginalName();
+                $filePath = $file->storeAs('uploads', $fileName, 'public');
+
+                $eviden->person_id = $personId;
+                $eviden->type = $request->status;
+                $eviden->file_name = time().'_'.$file->getClientOriginalName();
+                $eviden->mime = $file->getMimeType();
+                $eviden->save();
+
+                $evidenId = $eviden->id;
+                
+                $person->evidens_id = $evidenId;
+            }
+            
+
+            $person->save();
+
+            DB::commit();
+        
+            return redirect()->route('persons.index')->with(['success' => 'Penduduk "' . $person->name . '" diubah.']);
         } catch (\Exception $e) {
+            DB::rollback();
             return redirect()->route('jobs.index')->with(['error' => 'Tidak dapat melanjutkan proses']);
         }
 
@@ -182,18 +243,18 @@ class PersonController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Job $job
+     * @param  \App\Person $person
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Job $job)
+    public function destroy(Person $person)
     {
         try {
-            $job->delete();
+            $person->delete();
 
-            return redirect()->route('jobs.index')->with(['success' => 'Pekerjaan "' . $job->name . '" dihapus.']);
+            return redirect()->route('persons.index')->with(['success' => 'Penduduk "' . $person->name . '" dihapus.']);
 
         } catch (\exception $e) {
-            return redirect()->route('jobs.index')->with(['error' => 'Tidak dapat melanjutkan proses']);
+            return redirect()->route('persons.index')->with(['error' => 'Tidak dapat melanjutkan proses']);
         }
     }
 }
