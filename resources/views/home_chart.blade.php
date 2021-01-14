@@ -59,7 +59,7 @@ input[type="number"] {
                         </div>
                         <div class="m-l-15">
                             <h2 class="m-b-0">$23,523</h2>
-                            <p class="m-b-0 text-muted">Profit</p>
+                            <p class="m-b-0 text-muted">Penduduk Tetap</p>
                         </div>
                     </div>
                 </div>
@@ -74,7 +74,7 @@ input[type="number"] {
                         </div>
                         <div class="m-l-15">
                             <h2 class="m-b-0">+ 17.21%</h2>
-                            <p class="m-b-0 text-muted">Growth</p>
+                            <p class="m-b-0 text-muted">Penduduk Sementara</p>
                         </div>
                     </div>
                 </div>
@@ -89,7 +89,7 @@ input[type="number"] {
                         </div>
                         <div class="m-l-15">
                             <h2 class="m-b-0">3,685</h2>
-                            <p class="m-b-0 text-muted">Orders</p>
+                            <p class="m-b-0 text-muted">Pekerja Tetap</p>
                         </div>
                     </div>
                 </div>
@@ -104,7 +104,7 @@ input[type="number"] {
                         </div>
                         <div class="m-l-15">
                             <h2 class="m-b-0">1,832</h2>
-                            <p class="m-b-0 text-muted">Customers</p>
+                            <p class="m-b-0 text-muted">Wiraswasta</p>
                         </div>
                     </div>
                 </div>
