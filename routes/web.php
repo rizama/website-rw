@@ -21,6 +21,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/chart', 'HomeController@chart')->name('chart');
 Route::resource('educations', 'EducationController')->middleware('auth');
 Route::resource('jobs', 'JobController')->middleware('auth');
 Route::resource('economics', 'EconomicController')->middleware('auth');

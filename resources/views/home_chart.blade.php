@@ -6,6 +6,9 @@
 
 @section('css')
 <style>
+#container {
+	height: 500px;
+}
 .highcharts-figure, .highcharts-data-table table {
     min-width: 320px; 
     max-width: 800px;
@@ -39,8 +42,6 @@
 .highcharts-data-table tr:hover {
     background: #f1f7ff;
 }
-
-
 input[type="number"] {
 	min-width: 50px;
 }
@@ -146,11 +147,32 @@ input[type="number"] {
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <figure class="highcharts-figure">
+                        <div id="container3"></div>
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <figure class="highcharts-figure">
+                        <div id="container4"></div>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/variable-pie.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
@@ -384,6 +406,100 @@ input[type="number"] {
         }, {
             name: 'Other',
             y: 7.05
+        }]
+    }]
+});
+</script>
+<script>
+    Highcharts.chart('container3', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Browser market shares in January, 2018'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                connectorColor: 'silver'
+            }
+        }
+    },
+    series: [{
+        name: 'Share',
+        data: [
+            { name: 'Chrome', y: 61.41 },
+            { name: 'Internet Explorer', y: 11.84 },
+            { name: 'Firefox', y: 10.85 },
+            { name: 'Edge', y: 4.67 },
+            { name: 'Safari', y: 4.18 },
+            { name: 'Other', y: 7.05 }
+        ]
+    }]
+});
+</script>
+<script>
+Highcharts.chart('container4', {
+    chart: {
+        type: 'variablepie'
+    },
+    title: {
+        text: 'Countries compared by population density and total area.'
+    },
+    tooltip: {
+        headerFormat: '',
+        pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {point.name}</b><br/>' +
+            'Area (square km): <b>{point.y}</b><br/>' +
+            'Population density (people per square km): <b>{point.z}</b><br/>'
+    },
+    series: [{
+        minPointSize: 10,
+        innerSize: '20%',
+        zMin: 0,
+        name: 'countries',
+        data: [{
+            name: 'Spain',
+            y: 505370,
+            z: 92.9
+        }, {
+            name: 'France',
+            y: 551500,
+            z: 118.7
+        }, {
+            name: 'Poland',
+            y: 312685,
+            z: 124.6
+        }, {
+            name: 'Czech Republic',
+            y: 78867,
+            z: 137.5
+        }, {
+            name: 'Italy',
+            y: 301340,
+            z: 201.8
+        }, {
+            name: 'Switzerland',
+            y: 41277,
+            z: 214.5
+        }, {
+            name: 'Germany',
+            y: 357022,
+            z: 235.6
         }]
     }]
 });

@@ -14,6 +14,9 @@
                 <li class="@if(Request::is('home*')) active @endif">
                     <a href="{{url('/home')}}">Beranda</a>
                 </li>
+                <li class="@if(Request::is('chart*')) active @endif">
+                    <a href="{{route('chart')}}">Chart Stock</a>
+                </li>
             </ul>
         </li>
         <li class="nav-item dropdown @if((Request::is('educations*')) || (Request::is('jobs*')) || (Request::is('economics*')) || (Request::is('status*')) || (Request::is('persons*'))) open @endif">
