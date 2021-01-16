@@ -94,6 +94,7 @@ class PersonController extends Controller
             $personId = $person->id;
 
             $eviden = new Eviden;
+            $evidenId = null;
 
             if($request->file()) {
                 $file = $request->file('eviden');
@@ -118,6 +119,7 @@ class PersonController extends Controller
         
             return redirect()->route('persons.index')->with(['success' => 'Penduduk "' . $person->name . '" ditambahkan.']);
         } catch (\Exception $e) {
+            dd($e);
             DB::rollback();
             return redirect()->route('persons.index')->with(['error' => 'Tidak dapat melanjutkan proses']);
         }
