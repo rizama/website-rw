@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Person;
 
 class HomeController extends Controller
 {
@@ -23,7 +24,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $ret['total_persons'] = Person::all()->count();
+        $ret['total_persons_permanent'] = Person::where("citizens_status_id",1)->count();
+        $ret['total_persons_temporary'] = Person::where("citizens_status_id",2)->count();
+
+        return view('home', $ret);
     }
 
     public function chart()
