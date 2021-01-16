@@ -57,7 +57,7 @@ input[type="number"] {
                             <i class="fas fa-users"></i>
                         </div>
                         <div class="m-l-15">
-                            <h2 class="m-b-0">$23,523</h2>
+                            <h2 class="m-b-0">{{$total_persons}}</h2>
                             <p class="m-b-0 text-muted">Total Penduduk</p>
                         </div>
                     </div>
@@ -72,7 +72,7 @@ input[type="number"] {
                             <i class="fas fa-users"></i>
                         </div>
                         <div class="m-l-15">
-                            <h2 class="m-b-0">+ 17.21%</h2>
+                            <h2 class="m-b-0">{{$total_persons_permanent}}</h2>
                             <p class="m-b-0 text-muted">Penduduk Tetap</p>
                         </div>
                     </div>
@@ -87,7 +87,7 @@ input[type="number"] {
                             <i class="fas fa-users"></i>
                         </div>
                         <div class="m-l-15">
-                            <h2 class="m-b-0">3,685</h2>
+                            <h2 class="m-b-0">{{$total_persons_temporary}}</h2>
                             <p class="m-b-0 text-muted">Penduduk Sementara</p>
                         </div>
                     </div>
@@ -99,33 +99,8 @@ input[type="number"] {
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <canvas id="myChart"></canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <canvas id="myDoughnut"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                        <figure class="highcharts-figure">
-                            <div id="container"></div>
-                        </figure>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
                     <figure class="highcharts-figure">
-                        <div id="container2"></div>
+                        <div id="chart-gender"></div>
                     </figure>
                 </div>
             </div>
@@ -155,105 +130,7 @@ input[type="number"] {
     };
 </script>
 <script>
-    let config1 = {
-        type: 'pie',
-        data: {
-            datasets: [{
-                data: [
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                ],
-                backgroundColor: [
-                    chartColors.red,
-                    chartColors.orange,
-                    chartColors.yellow,
-                    chartColors.green,
-                    chartColors.blue,
-                ],
-                label: 'Dataset 1'
-            }],
-            labels: [
-                'Red',
-                'Orange',
-                'Yellow',
-                'Green',
-                'Blue'
-            ]
-        },
-        options: {
-            responsive: true,
-            title: {
-                display: true,
-                text: 'Pie Chart'
-            },
-            legend: {
-                display: true,
-                position: 'left',
-            },
-        }
-    };
-
-</script>
-<script>
-    let config2 = {
-        type: 'doughnut',
-        data: {
-            datasets: [{
-                data: [
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                ],
-                backgroundColor: [
-                    chartColors.red,
-                    chartColors.orange,
-                    chartColors.yellow,
-                    chartColors.green,
-                    chartColors.blue,
-                ],
-                label: 'Dataset 1'
-            }],
-            labels: [
-                'Red',
-                'Orange',
-                'Yellow',
-                'Green',
-                'Blue'
-            ]
-        },
-        options: {
-            responsive: true,
-            legend: {
-                display: true,
-                position: 'left',
-            },
-            title: {
-                display: true,
-                text: 'Chart.js Doughnut Chart'
-            },
-            animation: {
-                animateScale: true,
-                animateRotate: true
-            }
-        }
-    };
-</script>
-<script>
-    window.onload = function() {
-        let ctx1 = document.getElementById('myChart').getContext('2d');
-        window.myChart = new Chart(ctx1, config1);
-
-        let ctx2 = document.getElementById('myDoughnut').getContext('2d');
-        window.myDoughnut = new Chart(ctx2, config2);
-    };    
-</script>
-<script>
-    Highcharts.chart('container', {
+    Highcharts.chart('chart-gender', {
     chart: {
         plotBackgroundColor: null,
         plotBorderWidth: null,
@@ -261,14 +138,15 @@ input[type="number"] {
         type: 'pie'
     },
     title: {
-        text: 'Browser market shares in January, 2018'
+        text: 'Chart Penduduk Berdasarkan Jenis Kelamin'
     },
     tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        enabled: true,
+        pointFormat: '{series.name}: <b>{point.y} Orang</b>',
     },
     accessibility: {
         point: {
-            valueSuffix: '%'
+            valueSuffix: 'Orang'
         }
     },
     plotOptions: {
@@ -277,98 +155,24 @@ input[type="number"] {
             cursor: 'pointer',
             dataLabels: {
                 enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-            }
-        }
-    },
-    series: [{
-        name: 'Brands',
-        colorByPoint: true,
-        data: [{
-            name: 'Chrome',
-            y: 61.41,
-            sliced: true,
-            selected: true
-        }, {
-            name: 'Internet Explorer',
-            y: 11.84
-        }, {
-            name: 'Firefox',
-            y: 10.85
-        }, {
-            name: 'Edge',
-            y: 4.67
-        }, {
-            name: 'Safari',
-            y: 4.18
-        }, {
-            name: 'Sogou Explorer',
-            y: 1.64
-        }, {
-            name: 'Opera',
-            y: 1.6
-        }, {
-            name: 'QQ',
-            y: 1.2
-        }, {
-            name: 'Other',
-            y: 2.61
-        }]
-    }]
-});
-</script>
-<script>
-    Highcharts.chart('container2', {
-    chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
-    },
-    title: {
-        text: 'Browser market shares in January, 2018'
-    },
-    tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    },
-    accessibility: {
-        point: {
-            valueSuffix: '%'
-        }
-    },
-    plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-                enabled: false
+                format: '<b>{point.name}</b>: {point.y} Orang'
             },
             showInLegend: true
         }
     },
     series: [{
-        name: 'Brands',
+        name: 'Total',
         colorByPoint: true,
         data: [{
-            name: 'Chrome',
-            y: 61.41,
+            name: 'Wanita',
+            y: 5,
             sliced: true,
-            selected: true
+            selected: false,
+            color: chartColors.red
         }, {
-            name: 'Internet Explorer',
-            y: 11.84
-        }, {
-            name: 'Firefox',
-            y: 10.85
-        }, {
-            name: 'Edge',
-            y: 4.67
-        }, {
-            name: 'Safari',
-            y: 4.18
-        }, {
-            name: 'Other',
-            y: 7.05
+            name: 'Pria',
+            y: 2,
+            color: chartColors.blue
         }]
     }]
 });
