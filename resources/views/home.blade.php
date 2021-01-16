@@ -164,14 +164,14 @@ input[type="number"] {
         name: 'Total',
         colorByPoint: true,
         data: [{
-            name: 'Wanita',
-            y: 5,
+            name: "{{$chart_gender['wanita']['title']}}",
+            y: parseInt("{{$chart_gender['wanita']['data']}}"),
             sliced: true,
             selected: false,
             color: chartColors.red
         }, {
-            name: 'Pria',
-            y: 2,
+            name: "{{$chart_gender['pria']['title']}}",
+            y: parseInt("{{$chart_gender['pria']['data']}}"),
             color: chartColors.blue
         }]
     }]
