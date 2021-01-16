@@ -90,7 +90,7 @@
 
             <div class="row">
                 <div class="col-md-6 form-group">
-                    <label for="education">Pendidikan</label>
+                    <label for="education">Pendidikan Terakhir</label>
                     <select class="select2" name="education" id="education">
                         @foreach ($educations as $education)
                             <option value="{{$education->id}}">{{$education->name}}</option>
