@@ -100,6 +100,15 @@ input[type="number"] {
             <div class="card">
                 <div class="card-body">
                     <figure class="highcharts-figure">
+                        <div id="chart-rt"></div>
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <figure class="highcharts-figure">
                         <div id="chart-gender"></div>
                     </figure>
                 </div>
@@ -130,51 +139,110 @@ input[type="number"] {
     };
 </script>
 <script>
-    Highcharts.chart('chart-gender', {
-    chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
-    },
-    title: {
-        text: 'Chart Penduduk Berdasarkan Jenis Kelamin'
-    },
-    tooltip: {
-        enabled: true,
-        pointFormat: '{series.name}: <b>{point.y} Orang</b>',
-    },
-    accessibility: {
-        point: {
-            valueSuffix: 'Orang'
-        }
-    },
-    plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-                enabled: true,
-                format: '<b>{point.name}</b>: {point.y} Orang'
-            },
-            showInLegend: true
-        }
-    },
-    series: [{
-        name: 'Total',
-        colorByPoint: true,
-        data: [{
-            name: "{{$chart_gender['wanita']['title']}}",
-            y: parseInt("{{$chart_gender['wanita']['data']}}"),
-            sliced: true,
-            selected: false,
-            color: chartColors.red
-        }, {
-            name: "{{$chart_gender['pria']['title']}}",
-            y: parseInt("{{$chart_gender['pria']['data']}}"),
-            color: chartColors.blue
+    Highcharts.chart('chart-rt', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Chart Penduduk Berdasarkan RT'
+        },
+        tooltip: {
+            enabled: true,
+            pointFormat: '{series.name}: <b>{point.y} Orang</b>',
+        },
+        accessibility: {
+            point: {
+                valueSuffix: 'Orang'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.y} Orang'
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            name: 'Total',
+            colorByPoint: true,
+            data: [{
+                name: "{{$chart_rt['rt1']['title']}}",
+                y: parseInt("{{$chart_rt['rt1']['data']}}"),
+                color: chartColors.red
+                },{
+                    name: "{{$chart_rt['rt2']['title']}}",
+                    y: parseInt("{{$chart_rt['rt2']['data']}}"),
+                    color: chartColors.blue
+                },{
+                    name: "{{$chart_rt['rt3']['title']}}",
+                    y: parseInt("{{$chart_rt['rt3']['data']}}"),
+                    color: chartColors.orange
+                },{
+                    name: "{{$chart_rt['rt4']['title']}}",
+                    y: parseInt("{{$chart_rt['rt4']['data']}}"),
+                    color: chartColors.yellow
+                },{
+                    name: "{{$chart_rt['rt5']['title']}}",
+                    y: parseInt("{{$chart_rt['rt5']['data']}}"),
+                    color: chartColors.purple
+                }
+            ]
         }]
-    }]
-});
+    });
+</script>
+<script>
+    Highcharts.chart('chart-gender', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Chart Penduduk Berdasarkan Jenis Kelamin'
+        },
+        tooltip: {
+            enabled: true,
+            pointFormat: '{series.name}: <b>{point.y} Orang</b>',
+        },
+        accessibility: {
+            point: {
+                valueSuffix: 'Orang'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.y} Orang'
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            name: 'Total',
+            colorByPoint: true,
+            data: [{
+                name: "{{$chart_gender['wanita']['title']}}",
+                y: parseInt("{{$chart_gender['wanita']['data']}}"),
+                sliced: false,
+                selected: false,
+                color: chartColors.red
+            }, {
+                name: "{{$chart_gender['pria']['title']}}",
+                y: parseInt("{{$chart_gender['pria']['data']}}"),
+                color: chartColors.blue
+            }]
+        }]
+    });
 </script>
 @endsection
