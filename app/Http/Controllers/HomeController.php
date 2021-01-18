@@ -51,8 +51,6 @@ class HomeController extends Controller
                 "data" => $chart_rt['5']->count()
             ]
         ];
-        // dd( $ret['chart_gender']);
-        
 
         // Chart By Gender
         $chart_gender = Person::all()->groupBy("gender");
@@ -66,6 +64,51 @@ class HomeController extends Controller
                 "data" => $chart_gender['L']->count()
             ]
         ];
+
+        // Chart Bu Education
+        $chart_education = Person::all()->load('education')->groupBy("education_id");
+        
+        $data_chart_education = [];
+        foreach ($chart_education as $key => $value) {
+            $rand_color = '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
+            $body = [
+                "name" => $value[0]->education['name'],
+                "y" => $value->count()
+            ];
+
+            array_push($data_chart_education, $body);
+        }
+        $ret['data_chart_education'] = $data_chart_education;
+
+        // Chart By Work
+        $chart_job = Person::all()->load('job')->groupBy("job_id");
+
+        $data_chart_job = [];
+        foreach ($chart_job as $key => $value) {
+            $rand_color = '#'.str_pad(dechex(rand(0x000000, 0xFFFFFF)), 6, 0, STR_PAD_LEFT);
+            $body = [
+                "name" => $value[0]->job['name'],
+                "y" => $value->count()
+            ];
+
+            array_push($data_chart_job, $body);
+        }
+        $ret['data_chart_job'] = $data_chart_job;
+
+        // Chart By Status
+        $chart_status = Person::all()->load('status')->groupBy("citizens_status_id");
+
+        $data_chart_status = [];
+        foreach ($chart_status as $key => $value) {
+            $rand_color = '#'.str_pad(dechex(rand(0x000000, 0xFFFFFF)), 6, 0, STR_PAD_LEFT);
+            $body = [
+                "name" => $value[0]->status['name'],
+                "y" => $value->count()
+            ];
+
+            array_push($data_chart_status, $body);
+        }
+        $ret['data_chart_status'] = $data_chart_status;
 
         return view('home', $ret);
     }
