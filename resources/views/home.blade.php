@@ -100,7 +100,7 @@ input[type="number"] {
             <div class="card">
                 <div class="card-body">
                     <figure class="highcharts-figure">
-                        <div id="chart-rt"></div>
+                        <div id="chart-education"></div>
                     </figure>
                 </div>
             </div>
@@ -109,7 +109,38 @@ input[type="number"] {
             <div class="card">
                 <div class="card-body">
                     <figure class="highcharts-figure">
+                        <div id="chart-rt"></div>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <figure class="highcharts-figure">
                         <div id="chart-gender"></div>
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <figure class="highcharts-figure">
+                        <div id="chart-job"></div>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <figure class="highcharts-figure">
+                        <div id="chart-status"></div>
                     </figure>
                 </div>
             </div>
@@ -173,9 +204,9 @@ input[type="number"] {
             name: 'Total',
             colorByPoint: true,
             data: [{
-                name: "{{$chart_rt['rt1']['title']}}",
-                y: parseInt("{{$chart_rt['rt1']['data']}}"),
-                color: chartColors.red
+                    name: "{{$chart_rt['rt1']['title']}}",
+                    y: parseInt("{{$chart_rt['rt1']['data']}}"),
+                    color: chartColors.red
                 },{
                     name: "{{$chart_rt['rt2']['title']}}",
                     y: parseInt("{{$chart_rt['rt2']['data']}}"),
@@ -242,6 +273,120 @@ input[type="number"] {
                 y: parseInt("{{$chart_gender['pria']['data']}}"),
                 color: chartColors.blue
             }]
+        }]
+    });
+</script>
+<script>
+    Highcharts.chart('chart-education', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Chart Penduduk Berdasarkan Pendidikan Terakhir'
+        },
+        tooltip: {
+            enabled: true,
+            pointFormat: '{series.name}: <b>{point.y} Orang</b>',
+        },
+        accessibility: {
+            point: {
+                valueSuffix: 'Orang'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.y} Orang'
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            name: 'Total',
+            colorByPoint: true,
+            data: {!! json_encode($data_chart_education) !!}
+        }]
+    });
+</script>
+<script>
+    Highcharts.chart('chart-job', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Chart Penduduk Berdasarkan Pendidikan Terakhir'
+        },
+        tooltip: {
+            enabled: true,
+            pointFormat: '{series.name}: <b>{point.y} Orang</b>',
+        },
+        accessibility: {
+            point: {
+                valueSuffix: 'Orang'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.y} Orang'
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            name: 'Total',
+            colorByPoint: true,
+            data: {!! json_encode($data_chart_job) !!}
+        }]
+    });
+</script>
+<script>
+    Highcharts.chart('chart-status', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Chart Penduduk Berdasarkan Pendidikan Terakhir'
+        },
+        tooltip: {
+            enabled: true,
+            pointFormat: '{series.name}: <b>{point.y} Orang</b>',
+        },
+        accessibility: {
+            point: {
+                valueSuffix: 'Orang'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.y} Orang'
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            name: 'Total',
+            colorByPoint: true,
+            data: {!! json_encode($data_chart_status) !!}
         }]
     });
 </script>
