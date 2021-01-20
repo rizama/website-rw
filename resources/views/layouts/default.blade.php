@@ -9,7 +9,7 @@
     </title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ url('templates/enlinkadmin-10/demo/app') }}/assets/images/logo/favicon.png">
+    <link rel="shortcut icon" href="{{ url('templates/enlinkadmin-10/demo/app') }}/assets/images/logo/favicon_rw5.png">
 
     <!-- page css -->
     @yield('css')

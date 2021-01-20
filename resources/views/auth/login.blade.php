@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Enlink - Admin Dashboard Template</title>
+    <title>Login</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ url('templates/enlinkadmin-10/demo/app') }}/assets/images/logo/favicon.png">
+    <link rel="shortcut icon" href="{{ url('templates/enlinkadmin-10/demo/app') }}/assets/images/logo/favicon_rw5.png">
 
     <!-- page css -->
 
@@ -23,22 +23,22 @@
                 <div class="col-lg-4 d-none d-lg-flex bg" style="background-image:url('{{ url('templates/enlinkadmin-10/demo/app') }}/assets/images/others/login-4.jpg')">
                     <div class="d-flex h-100 p-h-40 p-v-15 flex-column justify-content-between">
                         <div>
-                            <img src="{{ url('templates/enlinkadmin-10/demo/app') }}/assets/images/logo/logo-rw.png" alt="">
+                            <img src="{{ url('templates/enlinkadmin-10/demo/app') }}/assets/images/logo/logo_rw5_white.png" alt="">
                         </div>
                         <div>
-                            <h1 class="text-white m-b-20 font-weight-normal">Exploring Enlink</h1>
-                            <p class="text-white font-size-16 lh-2 w-80 opacity-08">Climb leg rub face on everything give attitude nap all day for under the bed. Chase mice attack feet but rub face on everything hopped up.</p>
+                            <h1 class="text-white m-b-20 font-weight-normal">Sistem Informasi</h1>
+                            <p class="text-white font-size-16 lh-2 w-80 opacity-08">Data kependudukan warga RW05 Garut</p>
                         </div>
                         <div class="d-flex justify-content-between">
-                            <span class="text-white">© 2019 ThemeNate</span>
-                            <ul class="list-inline">
+                            <span class="text-white">© 2021 Created with love.</span>
+                            {{-- <ul class="list-inline">
                                 <li class="list-inline-item">
                                     <a class="text-white text-link" href="">Legal</a>
                                 </li>
                                 <li class="list-inline-item">
                                     <a class="text-white text-link" href="">Privacy</a>
                                 </li>
-                            </ul>
+                            </ul> --}}
                         </div>
                     </div>
                 </div>
@@ -78,8 +78,8 @@
                                     <div class="form-group">
                                         <div class="d-flex align-items-center justify-content-between">
                                             <span class="font-size-13 text-muted">
-                                                Belum punya akun?
-                                                <a class="small" href=""> Register</a>
+                                                {{-- Belum punya akun?
+                                                <a class="small" href=""> Register</a> --}}
                                             </span>
                                             <button class="btn btn-primary">Masuk</button>
                                         </div>
