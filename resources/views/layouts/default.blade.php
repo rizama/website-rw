@@ -19,6 +19,17 @@
 
     <!-- Additional css -->
     @yield('customcss')
+
+    <style>
+        .active-dashboard {
+            background-color: rgba(63,135,245,0.15);
+            border-right: 2px solid #3f87f5;
+        }
+
+        .active-dashboard a{
+            color: #3f87f5 !important;
+        }
+    </style>
 </head>
 
 <body>
