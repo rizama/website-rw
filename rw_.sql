@@ -11,7 +11,7 @@
  Target Server Version : 100411
  File Encoding         : 65001
 
- Date: 23/12/2020 14:14:59
+ Date: 20/01/2021 00:18:17
 */
 
 SET NAMES utf8mb4;
@@ -28,11 +28,14 @@ CREATE TABLE `economics`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of economics
 -- ----------------------------
+INSERT INTO `economics` VALUES (1, 'Cukup', '-', '2021-01-15 22:11:10', '2021-01-15 22:11:10');
+INSERT INTO `economics` VALUES (2, 'Lebih dari cukup', '-', '2021-01-15 22:11:40', '2021-01-15 22:11:40');
+INSERT INTO `economics` VALUES (3, 'Kurang', '-', '2021-01-15 22:11:51', '2021-01-15 22:11:51');
 
 -- ----------------------------
 -- Table structure for educations
@@ -45,11 +48,18 @@ CREATE TABLE `educations`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of educations
 -- ----------------------------
+INSERT INTO `educations` VALUES (1, 'SD', 'Sekolah Dasar', '2021-01-15 22:12:44', '2021-01-15 22:12:44');
+INSERT INTO `educations` VALUES (2, 'SMP', 'Sekolah Menengah Pertama', '2021-01-15 22:12:57', '2021-01-15 22:12:57');
+INSERT INTO `educations` VALUES (3, 'SMK', 'Sekolah Menengah Kejuruan', '2021-01-15 22:13:15', '2021-01-15 22:13:15');
+INSERT INTO `educations` VALUES (4, 'SMA', 'Sekolah Menengah Atas', '2021-01-15 22:13:27', '2021-01-15 22:13:27');
+INSERT INTO `educations` VALUES (5, 'S1', 'Strata 1', '2021-01-15 22:15:44', '2021-01-15 22:15:44');
+INSERT INTO `educations` VALUES (6, 'S2', 'Strata 2', '2021-01-15 22:15:51', '2021-01-15 22:15:51');
+INSERT INTO `educations` VALUES (7, 'Belum/Tidak ada', 'Belum/Tidak ada Pendidikan Terakhir', '2021-01-15 23:19:19', '2021-01-15 23:19:19');
 
 -- ----------------------------
 -- Table structure for evidens
@@ -99,11 +109,15 @@ CREATE TABLE `jobs`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of jobs
 -- ----------------------------
+INSERT INTO `jobs` VALUES (1, 'PNS', 'Pekerja Negeri Sipil', '2021-01-15 22:12:12', '2021-01-15 22:12:12');
+INSERT INTO `jobs` VALUES (2, 'KARYAWAN SWASTA', '-', '2021-01-15 22:12:24', '2021-01-15 22:12:29');
+INSERT INTO `jobs` VALUES (3, 'Pelajar', 'Belum Bekerja', '2021-01-15 23:07:51', '2021-01-15 23:07:51');
+INSERT INTO `jobs` VALUES (4, 'Belum/Tidak Bekerja', 'Belum Bekerja', '2021-01-15 23:08:09', '2021-01-15 23:08:09');
 
 -- ----------------------------
 -- Table structure for migrations
@@ -165,11 +179,18 @@ CREATE TABLE `persons`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of persons
 -- ----------------------------
+INSERT INTO `persons` VALUES (3, 5, 1, 1, 1, NULL, 'Megan', 'Garut', '1', 'P', '1990-12-31', 'Bandung', 'islam', '2021-01-15 22:57:23', '2021-01-15 23:06:15');
+INSERT INTO `persons` VALUES (4, 2, 2, 1, 2, NULL, 'Lucas', '-', '2', 'L', '2000-09-26', 'Bali', 'islam', '2021-01-15 22:59:01', '2021-01-15 22:59:01');
+INSERT INTO `persons` VALUES (5, 5, 2, 1, 1, NULL, 'Luke', NULL, '3', 'L', '1995-10-25', 'Bandung', 'islam', '2021-01-15 23:00:11', '2021-01-15 23:00:11');
+INSERT INTO `persons` VALUES (6, 3, 2, 1, 1, NULL, 'Emily', NULL, '4', 'P', '2004-01-31', 'Bandung', 'islam', '2021-01-15 23:05:59', '2021-01-15 23:05:59');
+INSERT INTO `persons` VALUES (7, 1, 3, 3, 1, NULL, 'Emma', 'Jl. A.H. Nasution No.105, Cipadung, Kec. Cibiru, Kota Bandung, Jawa Barat 40614', '5', 'P', '2004-01-26', 'Bandung', 'islam', '2021-01-15 23:10:01', '2021-01-15 23:10:01');
+INSERT INTO `persons` VALUES (8, 4, 2, 1, 2, NULL, 'Matt', '-', '3', 'L', '1999-07-27', 'Bali', 'islam', '2021-01-15 23:16:00', '2021-01-15 23:16:00');
+INSERT INTO `persons` VALUES (9, 7, 4, 1, 1, NULL, 'Gabrielle', NULL, '2', 'P', '2020-01-26', 'Bandung', 'katolik', '2021-01-15 23:20:02', '2021-01-15 23:20:02');
 
 -- ----------------------------
 -- Table structure for status_citizens
@@ -182,11 +203,13 @@ CREATE TABLE `status_citizens`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of status_citizens
 -- ----------------------------
+INSERT INTO `status_citizens` VALUES (1, 'Tetap', 'Warga Tetap', '2021-01-12 21:34:46', '2021-01-12 21:34:56');
+INSERT INTO `status_citizens` VALUES (2, 'Sementara', 'Warga Pendatang', '2021-01-12 21:35:47', '2021-01-12 21:35:47');
 
 -- ----------------------------
 -- Table structure for users
