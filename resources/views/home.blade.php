@@ -323,7 +323,7 @@ input[type="number"] {
             type: 'pie'
         },
         title: {
-            text: 'Chart Penduduk Berdasarkan Pendidikan Terakhir'
+            text: 'Chart Penduduk Berdasarkan Pekerjaan'
         },
         tooltip: {
             enabled: true,
@@ -361,7 +361,7 @@ input[type="number"] {
             type: 'pie'
         },
         title: {
-            text: 'Chart Penduduk Berdasarkan Pendidikan Terakhir'
+            text: 'Chart Penduduk Berdasarkan Status Tinggal'
         },
         tooltip: {
             enabled: true,
