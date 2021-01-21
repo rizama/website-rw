@@ -1,11 +1,11 @@
 <div class="logo logo-dark">
-    <a href="index.html">
+    <a href="{{url('/home')}}">
         <img src="{{ url('templates/enlinkadmin-10/demo/app') }}/assets/images/logo/logo_rw5.png" alt="Logo">
         <img class="logo-fold" src="{{ url('templates/enlinkadmin-10/demo/app') }}/assets/images/logo/logo_fold_rw5.png" alt="Logo">
     </a>
 </div>
 <div class="logo logo-white">
-    <a href="index.html">
+    <a href="{{url('/home')}}">
         <img src="{{ url('templates/enlinkadmin-10/demo/app') }}/assets/images/logo/logo_rw5_white.png" alt="Logo">
         <img class="logo-fold" src="{{ url('templates/enlinkadmin-10/demo/app') }}/assets/images/logo/logo_fold_rw5_white.png" alt="Logo">
     </a>
