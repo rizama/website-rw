@@ -1,23 +1,11 @@
 <div class="side-nav-inner">
     <ul class="side-nav-menu scrollable">
-        <li class="nav-item dropdown @if((Request::is('home*'))) open @endif">
-            <a class="dropdown-toggle" href="javascript:void(0);">
+        <li class="@if(Request::is('home*'))active-dashboard @endif">
+            <a href="{{url('/home')}}">
                 <span class="icon-holder">
                     <i class="anticon anticon-dashboard"></i>
                 </span>
                 <span class="title">Dashboard</span>
-                <span class="arrow">
-                    <i class="arrow-icon"></i>
-                </span>
-            </a>
-            <ul class="dropdown-menu">
-                <li class="@if(Request::is('home*')) active @endif">
-                    <a href="{{url('/home')}}">Beranda</a>
-                </li>
-                {{-- <li class="@if(Request::is('chart*')) active @endif">
-                    <a href="{{route('chart')}}">Chart Stock</a>
-                </li> --}}
-            </ul>
         </li>
         <li class="nav-item dropdown @if((Request::is('educations*')) || (Request::is('jobs*')) || (Request::is('economics*')) || (Request::is('status*')) || (Request::is('persons*'))) open @endif">
             <a class="dropdown-toggle" href="javascript:void(0);">
