@@ -6,6 +6,7 @@
                     <i class="anticon anticon-dashboard"></i>
                 </span>
                 <span class="title">Dashboard</span>
+            </a>
         </li>
         <li class="nav-item dropdown @if((Request::is('educations*')) || (Request::is('jobs*')) || (Request::is('economics*')) || (Request::is('status*')) || (Request::is('persons*'))) open @endif">
             <a class="dropdown-toggle" href="javascript:void(0);">
