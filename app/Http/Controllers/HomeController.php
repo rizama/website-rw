@@ -24,6 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $all_persons = Person::with('education', 'job', 'economic', 'status')->get();
+
         $ret['total_persons'] = Person::all()->count();
         $ret['total_persons_permanent'] = Person::where("citizens_status_id",1)->count();
         $ret['total_persons_temporary'] = Person::where("citizens_status_id",2)->count();
@@ -110,6 +112,8 @@ class HomeController extends Controller
         }
         $ret['data_chart_status'] = $data_chart_status;
 
+        $ret['all_persons'] = $all_persons;
+        
         return view('home', $ret);
     }
 
